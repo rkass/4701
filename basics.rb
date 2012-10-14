@@ -23,6 +23,7 @@ class Basics
   end
 
   #return closest snapshot to this point in time
+
   def getSnapshot(month, day, hour)
     time = getUnixTime(month, day, hour)
     difference = false
