@@ -22,8 +22,8 @@ class Node
 
   def sumWithWeights
     ret = 0
-    for i in 0..(incomingNodes.count - 1)
-      ret += incomingNodes[i].output * incomingWeights[i]
+    for i in 0..(@incomingNodes.count - 1)
+      ret += @incomingNodes[i].output * @incomingWeights[i]
     end
     ret
   end

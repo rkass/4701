@@ -3,6 +3,8 @@ require File.expand_path('../node.rb', __FILE__)
 class Network
 
   attr_accessor :nodes
+
+  @@badInput = "Input array not same length as amount of nodes in input layer"
   
   # creates a fully connected network (layer i only outputs to i + 1)
   # with n nodes per layer, i input nodes, h hidden layers, and o output nodes
@@ -31,11 +33,10 @@ class Network
    end 
   
   def propagate(input)
-    raise "Input array not same length as amount of nodes in input layer" 
-      unless input.count == @nodes[0].count
+    raise @@badInput unless input.count == @nodes[0].count
     #set inputs
     for i in 0..(input.count - 1)
-      @nodes[i].input = input[i]
+      @nodes[0][i].input = input[i]
     end
     #prop
     for i in 0..(@nodes.count - 1)
