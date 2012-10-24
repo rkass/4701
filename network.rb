@@ -82,6 +82,18 @@ class Network
     end
   end
 
+  def train(inputsArray, expectedResults)
+    if inputsArray.count != expectedResults.count 
+       puts "Did not run training, inputArray and expectedResults are of
+         different length"
+    else
+      for i in 0 ..(inputsArray.count-1)
+        propagate(inputsArray[i])
+        backPropagate(expectedResults[i])
+      end
+    end
+  end
+
 
   #creates an array of n random numbers from 0 to 1
   def initWeights(n)
