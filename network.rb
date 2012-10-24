@@ -5,7 +5,8 @@ class Network
   attr_accessor :nodes, :step
 
   @@badInput = "Input array not same length as amount of nodes in input layer"
-  
+  @@badTrain = "Did not run training, inputArray and expectedResults are of
+         different length"
   # creates a fully connected network (layer i only outputs to i + 1)
   # with n nodes per layer, i input nodes, h hidden layers, and o output nodes,
   # a transition function tf--a number--corresponding values available for 
@@ -83,15 +84,11 @@ class Network
   end
 
   def train(inputsArray, expectedResults)
-    if inputsArray.count != expectedResults.count 
-       puts "Did not run training, inputArray and expectedResults are of
-         different length"
-    else
+    raise @@badTrain unless inputsArray.count == expectedResults.count 
       for i in 0 ..(inputsArray.count-1)
         propagate(inputsArray[i])
         backPropagate(expectedResults[i])
       end
-    end
   end
 
 
