@@ -1,6 +1,6 @@
 class Node
 
-  attr_accessor :incomingNodes, :incomingWegihts, :input, :output
+  attr_accessor :incomingNodes, :incomingWeights, :input, :output, :error
 
   def initialize(nodes, weights, transition)
     @incomingNodes = nodes #nodes receiving this as input
@@ -16,7 +16,7 @@ class Node
         @output = logistic input
       end
     else
-      @output = @input
+      @output = logistic(@input)
     end
   end 
 
@@ -34,7 +34,11 @@ class Node
     1/(1 + Math.exp(-x))
   end
 
-  private :sumWithWeights, :logistic
+  def logisticDeriv(x)
+      Math.exp(x)/((1.0 + Math.exp(x))**2.0)
+  end 
+
+  private :logistic
     
 
 end
