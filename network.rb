@@ -25,7 +25,7 @@ class Network
     (1..h).each do
       @nodes[h] = []
       (0..(n - 1)).each do
-        @nodes[h].push Node.new(@nodes[h - 1], initWeights(@nodes[h - 1].count), tf)
+        @nodes[h].push Node.new(@nodes[h-1], initWeights(@nodes[h-1].count),tf)
       end
     end
     #output layer
@@ -52,17 +52,17 @@ class Network
 
   def backPropagate(expected)
     #find the error of the output node
-    @nodes[(@nodes.count-1)][0].error = expected - @nodes[(@nodes.count-1)][0].output
+    @nodes[(@nodes.count-1)][0].error = expected-@nodes[(@nodes.count-1)][0].output
     
     #find the errors for all the hidden layers
     @nodes.slice(1..(@nodes.count-1)).reverse.each_with_index do |x,i|
      layer = @nodes.count-1-i
      #update the next layers error values with each of the incoming weights
      #need old weights so do here.
+     @nodes[(layer-1)].each_with_index do |nextN,index|
+       nextN.error =0
+     end
      @nodes[layer].each do |n|
-        @nodes[(layer-1)].each_with_index do |nextN,index|
-          nextN.error =0
-        end
         @nodes[(layer-1)].each_with_index do |nextN,index|
           nextN.error += n.error*n.incomingWeights[index]
         end
@@ -76,6 +76,9 @@ class Network
         when 0 
           derivative = n.logisticDeriv(sum)
         end
+        puts  @nodes[layer-1][index].output
+        puts n.logisticDeriv(sum)
+        puts derivative
         delta = @step*n.error*(n.logisticDeriv(sum))*@nodes[layer-1][index].output
         n.incomingWeights[index] = w+delta
       end
