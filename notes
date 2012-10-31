@@ -1,14 +1,18 @@
 The derivative of the input (used in adjusting weights), becomes NaN after input exceeds 709.
 This is corrected by setting the derivative component to zero (the value assumed when input = 709) in this case.
 
-The output is not fed through a transition function--to allow for the output to take on values in the
+The output is not fed through a transition function to allow for the output to take on values in the
 domain of the expected values. 
 
-It seems like our hidden layers take on either 0 our 1 as their output values.
+It seems like our hidden layers take on either 0 our 1 as their output values.  Because of this, the first
+item in the 'possible directions' list.
 
 Possible directions and things to test:
-  inputs, number and what they are
-  hidden layers
+  modify transition function so it's sensitive to more extreme input, or look into relativizing input so it's
+    more within the scope of the transition function
+  inputs: what and how many
+  number of hidden layers
   nodes/hidden layer
   ratio of training set to validation set
+  set training set as many copies of the original training set
   loop on train and validate (gold digging)
