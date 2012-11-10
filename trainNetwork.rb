@@ -22,6 +22,22 @@ def trainAndValidate(x, n, h, step)
   ret
 end
 
+def trainAndValidateContext(x, n, h, step)
+  basics = Basics.new
+  trainingSet = basics.getFirstSnapshotsRatioWeekAndDay x
+  validationSet = basics.getLastSnapshotsRatioWeekAndDay x
+  expectedArray = getExpected trainingSet
+  trainingSet = trainingSet.slice(0..(trainingSet.count - 25))
+  network = Network.new(n, 12, h, 1, 0, step)
+  network.train(trainingSet, expectedArray)
+  squaredDiffs = getSquaredDiffs(network, validationSet)
+  ret = OpenStruct.new
+  ret.ann = average squaredDiffs.netResults
+  ret.naive = average squaredDiffs.naiveResults
+  ret.net = network
+  ret
+end
+
 def getSquaredDiffs(network, validationSet)
   resultsOnValidation = [] 
   naiveResults = [] 

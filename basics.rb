@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'json'
 require 'time'
+require 'ostruct'
+require File.expand_path('../trainNetwork.rb', __FILE__)
+
 class Basics
 
   attr_accessor :snapshots
@@ -66,7 +69,153 @@ class Basics
     end 
     ret 
   end 
+
+  def getLastWithWeek(x)
+    ret = []
+    for i in x..(@@snapshots.count - 1)
+      thisArr = []
+      thisArr.push @@snapshots[i][0].to_f
+      thisArr.push @@snapshots[i][1].to_f
+      thisArr.push @@snapshots[i][2].to_f
+      thisArr.push @@snapshots[i][3].to_f
+      weekAvg = getPastAverage(i, 24 * 7)
+      thisArr.push weekAvg.spread
+      thisArr.push weekAvg.price
+      thisArr.push weekAvg.bid
+      thisArr.push weekAvg.ask
+      ret.push thisArr
+    end 
+    ret 
+  end 
+
+  def getFirstWithWeek(x)
+    ret = []
+    for i in 167..(x - 1)
+      thisArr = []
+      thisArr.push @@snapshots[i][0].to_f
+      thisArr.push @@snapshots[i][1].to_f
+      thisArr.push @@snapshots[i][2].to_f
+      thisArr.push @@snapshots[i][3].to_f
+      weekAvg = getPastAverage(i, 24 * 7)
+      thisArr.push weekAvg.spread
+      thisArr.push weekAvg.price
+      thisArr.push weekAvg.bid
+      thisArr.push weekAvg.ask
+      ret.push thisArr
+    end 
+    ret 
+  end 
+     
+  def getFirstWithDay(x)
+    ret = []
+    for i in 23..(x - 1)
+      thisArr = []
+      thisArr.push @@snapshots[i][0].to_f
+      thisArr.push @@snapshots[i][1].to_f
+      thisArr.push @@snapshots[i][2].to_f
+      thisArr.push @@snapshots[i][3].to_f
+      dayAvg = getPastAverage(i, 24)
+      thisArr.push dayAvg.spread
+      thisArr.push dayAvg.price
+      thisArr.push dayAvg.bid
+      thisArr.push dayAvg.ask
+      ret.push thisArr
+    end 
+    ret 
+  end 
   
+  def getLastWithDay(x)
+    ret = []
+    for i in x..(@@snapshots.count - 1)
+      thisArr = []
+      thisArr.push @@snapshots[i][0].to_f
+      thisArr.push @@snapshots[i][1].to_f
+      thisArr.push @@snapshots[i][2].to_f
+      thisArr.push @@snapshots[i][3].to_f
+      dayAvg = getPastAverage(i, 24)
+      thisArr.push dayAvg.spread
+      thisArr.push dayAvg.price
+      thisArr.push dayAvg.bid
+      thisArr.push dayAvg.ask
+      ret.push thisArr
+    end 
+    ret 
+  end 
+
+  def getFirstWithWeekAndDay(x)
+    ret = []
+    for i in 167..(x - 1)
+      thisArr = []
+      thisArr.push @@snapshots[i][0].to_f
+      thisArr.push @@snapshots[i][1].to_f
+      thisArr.push @@snapshots[i][2].to_f
+      thisArr.push @@snapshots[i][3].to_f
+      dayAvg = getPastAverage(i, 24)
+      thisArr.push dayAvg.spread
+      thisArr.push dayAvg.price
+      thisArr.push dayAvg.bid
+      thisArr.push dayAvg.ask
+      weekAvg = getPastAverage(i, 24 * 7)
+      thisArr.push weekAvg.spread
+      thisArr.push weekAvg.price
+      thisArr.push weekAvg.bid
+      thisArr.push weekAvg.ask
+      ret.push thisArr
+    end 
+    ret 
+  end 
+
+
+  def getLastWithWeekAndDay(x)
+    ret = []
+    for i in x..(@@snapshots.count - 1)
+      thisArr = []
+      thisArr.push @@snapshots[i][0].to_f
+      thisArr.push @@snapshots[i][1].to_f
+      thisArr.push @@snapshots[i][2].to_f
+      thisArr.push @@snapshots[i][3].to_f
+      dayAvg = getPastAverage(i, 24)
+      thisArr.push dayAvg.spread
+      thisArr.push dayAvg.price
+      thisArr.push dayAvg.bid
+      thisArr.push dayAvg.ask
+      weekAvg = getPastAverage(i, 24 * 7)
+      thisArr.push weekAvg.spread
+      thisArr.push weekAvg.price
+      thisArr.push weekAvg.bid
+      thisArr.push weekAvg.ask
+      ret.push thisArr
+    end 
+    ret 
+  end 
+
+  def getPastAverage(x, length)
+    spreadAvg = []
+    priceAvg = []
+    bidAvg = []
+    askAvg = []   
+    for i in (x - length - 1)..x
+      spreadAvg.push @@snapshots[i][0].to_f
+      priceAvg.push @@snapshots[i][1].to_f
+      bidAvg.push @@snapshots[i][2].to_f
+      askAvg.push @@snapshots[i][3].to_f
+    end
+    ret = OpenStruct.new
+    ret.spread = average spreadAvg
+    ret.price = average priceAvg
+    ret.bid = average bidAvg
+    ret.ask = average askAvg
+    ret
+  end
+
+  def getFirstSnapshotsRatioWeekAndDay(x)
+    getFirstWithWeekAndDay((x * @@snapshots.count).to_i)
+  end
+
+  def getLastSnapshotsRatioWeekAndDay(x)
+    getLastWithWeekAndDay((x * @@snapshots.count).to_i)
+  end
+    
   def getFirstSnapshotsRatio(x)
     getFirstSnapshots((x * @@snapshots.count).to_i)
   end 
