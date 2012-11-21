@@ -20,7 +20,7 @@ end
 def findBestInContext(x, n, h, step, loops)
   best = trainAndValidateContext(x, n, h, step)
   for i in 2..loops
-    trained = trainAndValidate(x, n, h, step)
+    trained = trainAndValidateContext(x, n, h, step)
     if trained.ann < best.ann
       best = trained
     end
