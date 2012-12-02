@@ -1,25 +1,28 @@
 #!/usr/bin/ruby
 require File.expand_path('../gold_digger.rb', __FILE__)
 
-def hello(name)
-	s = "Hello " + name
-	s
-end
-
 def runTrainAndValidate(x,n,h,step, fun)
 	# alert(("**" + x + "!!"))
-	xInt = x.to_f
-	nInt = n.to_i
-	hInt = h.to_i
-	stepInt= stepInt.to_f
+	x = x.to_f
+	nInt = n.to_f
+	hInt = h.to_f
+	step= step.to_f
 	if fun=="Logistic" 
 		alert("l")
 	else
 		alert("other")
 	end
-	ret = findBestIn(xInt,nInt,hInt,stepInt, 20)
-	"Naive results: " +  (ret.naive).to_s + "\n" + "Network Results: " + (ret.ann).to_s
 
+	alert("In order " + x.to_s + " " + nInt.to_s + " " + hInt.to_s + " " + step.to_s)
+	# alert((x*7).to_s)
+	# alert((nInt*7).to_s)
+	# alert((hInt*7).to_s)
+	# alert((step*7).to_s)
+	ret = findBestIn(x,nInt,hInt,step,5)
+	ret1= findBestIn(0.9,20,2,0.9,5)
+
+	alert("Naive results: " +  (ret.naive).to_s + "\n" + "Network Results: " + (ret.ann).to_s + "\n Hard code" + (ret1.naive).to_s + " " + (ret1.ann).to_s)
+	"Naive results: " +  (ret.naive).to_s + "\n" + "Network Results: " + (ret.ann).to_s + "\n Hard code" + (ret1.naive).to_s + " " + (ret1.ann).to_s
 
 end
 
