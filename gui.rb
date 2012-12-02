@@ -1,28 +1,18 @@
 #!/usr/bin/ruby
 require File.expand_path('../gold_digger.rb', __FILE__)
 
-def runTrainAndValidate(x,n,h,step, fun)
+def runTrainAndValidate(x,n,h,step, loopNum)
 	# alert(("**" + x + "!!"))
 	x = x.to_f
 	nInt = n.to_f
 	hInt = h.to_f
 	step= step.to_f
-	if fun=="Logistic" 
-		alert("l")
-	else
-		alert("other")
-	end
+	loopNum = loopNum.to_f
 
-	alert("In order " + x.to_s + " " + nInt.to_s + " " + hInt.to_s + " " + step.to_s)
-	# alert((x*7).to_s)
-	# alert((nInt*7).to_s)
-	# alert((hInt*7).to_s)
-	# alert((step*7).to_s)
-	ret = findBestIn(x,nInt,hInt,step,5)
-	ret1= findBestIn(0.9,20,2,0.9,5)
 
-	alert("Naive results: " +  (ret.naive).to_s + "\n" + "Network Results: " + (ret.ann).to_s + "\n Hard code" + (ret1.naive).to_s + " " + (ret1.ann).to_s)
-	"Naive results: " +  (ret.naive).to_s + "\n" + "Network Results: " + (ret.ann).to_s + "\n Hard code" + (ret1.naive).to_s + " " + (ret1.ann).to_s
+	ret = findBestIn(x,nInt,hInt,step,loopNum.to_f)
+	
+	"Naive results: " +  (ret.naive).to_s + "\n" + "Network Results: " + (ret.ann).to_s
 
 end
 
@@ -32,7 +22,7 @@ Shoes.app :width =>500 do
 	h=""
 	n=""
 	step=""
-	fun=""
+	loopNum=""
 	stack do
 		flow do
 			stack :width => "50%" do
@@ -68,16 +58,16 @@ Shoes.app :width =>500 do
 		end
 		flow do
 			stack :width => "50%" do
-				caption "Transition Function:"
+				caption "Number of networks to create:"
 			end
 			stack :width => "50%" do
-				fun=list_box :items => ["Logistic", "Trans1", "Trans2" ]
+				loopNum=edit_line
 			end
 		end
 		flow do
 			style(:margin_left => '40%', :margin_top => '10%', :margin_bottom => '10%')
 			button "Submit" do 
-				@p.clear { (para "Results: \n" +  runTrainAndValidate(x.text,n.text,h.text,step.text, fun.text))}
+				@p.clear { (para "Results: \n" +  runTrainAndValidate(x.text,n.text,h.text,step.text, loopNum.text))}
 			end
 		end
 		flow :width => 470, :margin => 15, :height => 100 do
