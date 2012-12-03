@@ -56,6 +56,48 @@ class Basics
     ret 
   end 
 
+def getExpected(trainingSet)
+  expected = []
+  for i in 24..(trainingSet.count - 1)
+    expected[i - 24] = [trainingSet[i][1]]
+  end   
+  expected
+end
+
+
+  def getSets(x)
+    indexList = []
+    for i in 0..(((@@snapshots.count - 24) * (1 - x)).to_int)
+      indexList.push rand (@@snapshots.count - 24)
+    end
+    training = []
+    validation = []
+    expectedTraining = []
+    expectedValidation = []
+    for i in 0..(@@snapshots.count - 25)
+      thisArr = []
+      thisArr.push 5# @@snapshots[i][0].to_f
+      thisArr.push 5 #@@snapshots[i][1].to_f
+      thisArr.push 5 #@@snapshots[i][2].to_f
+      thisArr.push 5 #@@snapshots[i][3].to_f
+      if indexList.include? i
+        validation.push thisArr 
+        expectedValidation.push [@@snapshots[i + 24][1].to_f]
+      else
+        training.push thisArr
+        expectedTraining.push [@@snapshots[i + 24][1].to_f]
+      end
+    end
+    ret = OpenStruct.new
+    ret.training = training
+    ret.validation = validation
+    ret.expectedTraining = expectedTraining
+    ret.expectedValidation = expectedValidation
+    ret
+  end
+    
+       
+
   #from x onward
   def getLastSnapshots(x)
     ret = []
@@ -69,6 +111,32 @@ class Basics
     end 
     ret 
   end 
+
+  def getLastNoise(x)
+    ret = []
+    for i in x..(@@snapshots.count - 1)
+      thisArr = []
+      thisArr.push rand 100.to_f
+      thisArr.push 5 #thisArr.push @@snapshots[i][2].to_f
+      thisArr.push rand 100.to_f
+      thisArr.push rand 100.to_f
+      ret.push thisArr
+    end
+    ret
+  end
+  def getFirstNoise(x)
+    ret = []
+    for i in 0..(x - 1)
+      thisArr = []
+      thisArr.push rand 100.to_f
+      thisArr.push 5#thisArr.push @@snapshots[i][2].to_f
+      thisArr.push rand 100.to_f
+      thisArr.push rand 100.to_f
+      ret.push thisArr
+    end
+    ret
+  end  
+
 
   def getLastWithWeek(x)
     ret = []
@@ -212,6 +280,14 @@ class Basics
     getFirstWithWeekAndDay((x * @@snapshots.count).to_i)
   end
 
+   def getFirstSnapshotsRatioNoise(x)
+    getFirstNoise((x * @@snapshots.count).to_i)
+  end
+
+  def getLastSnapshotsRatioNoise(x)
+    getLastNoise((x * @@snapshots.count).to_i)
+  end 
+  
   def getLastSnapshotsRatioWeekAndDay(x)
     getLastWithWeekAndDay((x * @@snapshots.count).to_i)
   end

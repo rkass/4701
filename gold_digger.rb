@@ -17,6 +17,42 @@ def findBestIn(x, n, h, step, loops)
   best
 end
 
+def findBestInTrivial(x, y, n, h, step, loops)
+  #set initial
+  best = trainAndValidateTrivial(x,y, n, h, step)
+  for i in 2..loops
+    trained = trainAndValidateTrivial(x,y, n, h, step)
+    if trained.ann < best.ann
+      best = trained
+    end
+  end
+  best
+end
+
+def findBestInNew(x, n, h, step, loops)
+  #set initial
+  best = trainAndValidateNew(x, n, h, step)
+  for i in 2..loops
+    trained = trainAndValidateNew(x, n, h, step)
+    if trained.ann < best.ann
+      best = trained
+    end
+  end
+  best
+end
+
+def findBestInWithNoise(x, n, h, step, loops)
+  #set initial
+  best = trainWithNoise(x, n, h, step)
+  for i in 2..loops
+    trained = trainAndValidate(x, n, h, step)
+    if trained.ann < best.ann
+      best = trained
+    end
+  end
+  best
+end
+
 def findBestInContext(x, n, h, step, loops)
   best = trainAndValidateContext(x, n, h, step)
   for i in 2..loops
