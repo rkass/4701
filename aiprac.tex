@@ -1,10 +1,12 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,11pt]{article}
 %\documentclass[a4paper,10pt]{scrartcl}
 
 \usepackage[utf8]{inputenc}
-
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[margin=1.25in]{geometry}
 \title{Predicting Bitcoin Prices with a Ruby Artifical Neural Network}
-\author{Sara Bocabella, Ryan Kass}
+\author{Sara Bocabella (snb42), Ryan Kass (rck72)}
 \date{December 11, 2012}
 
 \pdfinfo{%
@@ -23,7 +25,7 @@ Neural networks have been successfully used to
 model commodity pricing data and even to refute the Efficient Market Hypothesis
 through their ability to generalize commodity data into non-linear, 
 stochastic functions previously thought to be entirely stochastic and non-generalizeable
-\footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices}
+\footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices 1997}
 The commodity we chose to test our netowrk on, Bitcoin, was established in 2009 and has 
 experienced massive volatility in its price since its inception.  We chose to use Bitcoin 
 precicely for this reason, and the fact that it is an immature market not yet flooded with
@@ -34,6 +36,10 @@ ask volume, bid volume, last price, and the spread between the highest bid and t
 These four features are the input to the network, which then outputs a guess of the price twenty-four
 hours after the input data.  The network was able to learn to predict the price with an average error
 of 49\cent, compared to an average twenty-four hour price fluctuation of 37\cent. 
+\section{Abstract}
+
+Sara TODO
+
 \section{Problem Definition}
 Can an artifical neural network constructed in ruby be trained to accurately predict the price in USD
 of a bitcoin twenty four hours in the future.  The network is trained on approximately 3,000 examples.
@@ -69,6 +75,23 @@ a transition function.  The derivative is the summed weights and inputs fed into
 is {$\frac{e^{x}}{({1 + e^{x}})^{2}}$}.
 This formula is applied to every node of every layer to adjust weights, with the exception of the input
 layer, as it has no associated weights.
+
+\section{Related Work}
+Several studies and analysies have been done to examine the usefulness of Neural Networks in predicting financial data, especially in the prediction of stock. Upon begining the project, we based a great deal of our planning on a piece written by Dr Clarence N W Tan, PhD titled "Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System." \footnote{Clarence Tan ``Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System'' 1997} This paper gave a brief explanation of neural nets and discussed their ability to predict financial information. Specifically, it discussed the history and fundamentals of neural networks, explaning the concepts of feedforward networks and backpropagation along with their formulaes (for a recap on these concepts, see Method above) After describing these principles, it continued by discussing the parameters along which you could change a neural network and perhaps optimize preformace. It listed the dynamic 
+variables (refered to as the ``neurodynamics'' of the system) as: ''combination of inputs, production of outputs, types of activation functions and weighting schemes`` and the architecture variables (the variables affecting the structure of the network) as ''types of interconnections, number of neurons and number of [hidden] layers.`` . After discussion, we decided to vary the network architecture, experimenting on the number of nerons and the number of hidden layers. The inputs, and outputs would remain constant, as would the weighting scheme (initiliaze with random weights, update based on Back Propogation). Finally, while we hoped to evaluate the effects of changing the transition function, we decided that this manipulation might be too much and instead simply varied the nodes and layers, sticking with a traditional sigmoidal logistic function as an activation funciton for each node. After discussion with the professor, it was decided that the interconnections, too would remain static, simply attaching 
+all nodes in the previous layer, to all nodes in the current layer, in order to allow the network to prune itself. \\
+Other related works include ''Using Neural Networks to Forecast Stock Prices`` \footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices 1997} which also touches on the Efficient Market Hypothesis, 
+attemting to realistically evaluate how much Neural Networks can contribute to the prediction of stocks. In
+the paper, Lawrence argues that NNs have outpreformed all other forms of financial prediction, but cautions
+readers about the limitations of NNs. Comparing NNs to expert systems, he states that ''neural networks are
+faster`` and that ''the major problem with applying expert systems to the stock market is the difficulty in
+formulating knowledge of the markets`` \footnote{Lawrence p 8}but that NNs can extract the rules without need of humans to
+understand or expliclty formalize the rules. He does recognize the limitations however, citing a study by
+McCluskey where ''neural networks all beat the buy and hold strategy and the S and P 500 index, but often
+failed to beat a hand-coded optimization.`` \footnote{Lawrence p 18}
+Finally, we reviewed many other papers which discussed the several other extensions of Neural Networks. One entertained the possibility of doing component analysis so that the inputs were independant and which reduced the noise put into the system and analyzed two such techniques an Independant Component Analysis that assumed a non-Gaussian distribution of inputs and a Principle Componnet Analysis which extracted independant components while assuming a Gaussian distribution. In both cases the researchers found that removing noise and only inputing independant factors increased the accuracy over a simple neural network \footnote{Liu and Wang ''Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market`` 2011}. While our experiment didn't expliclty run algorithms to remove dependant factors, while choosing the input vector, we did take independance of factors into account. 
+These relevant works aided in planning our network and experiments, and as you will see later, can be used to help us evaluate the results we receive and account for succeses and failures in our approach. 
+
 \section{System Architecture and Implementation}
 The data was obtained with a ruby script that accessed Mtgox.com every hour in order to pull down the information we used.
 This information was then recorded into a Postgresql database every hour.  We used Heroku to host the script and the database.
@@ -106,6 +129,14 @@ At each iteration of training, the network takes in two arrays as input: the inp
 the derivative in the process of adjusting the weights we found that when the argument fed to the derivative function was
 greater than 709, it would output Nan.  Since as x goes to infinity, the derivative function, approaches zero, we manually
 check is the derivative returns Nan, and if it does we output zero.
+
+
+\section{Experimental Evaluation}
+
+
+\section{Future Work}
+
+
 \section{Conclusions}
 
 
