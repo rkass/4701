@@ -29,7 +29,7 @@ experienced massive volatility in its price since its inception.  We chose to us
 precicely for this reason, and the fact that it is an immature market not yet flooded with
 banks and finance firms controlling market movements.
 \newline \newline
-For three months, we have beenn collecting hourly data on Bitcoin, recording
+For three months, we have been collecting hourly data on Bitcoin, recording
 ask volume, bid volume, last price, and the spread between the highest bid and the lowest asking price.
 These four features are the input to the network, which then outputs a guess of the price twenty-four
 hours after the input data.  The network was able to learn to predict the price with an average error
@@ -39,7 +39,10 @@ Can an artifical neural network constructed in ruby be trained to accurately pre
 of a bitcoin twenty four hours in the future.  The network is trained on approximately 3,000 examples.
 Each example contains four data points, last price, difference between highest bid and lowest ask,
 amount of bitcoins up for sale, and amount of bitcoins asked for.  The output is a floating point which
-represents the predicted price twenty four hours from now.
+represents the predicted price twenty four hours from now.  As a subtask, we set out to implement a highly
+flexible neural network that can be initialized with any number of inputs, hidden layers, nodes per hidden
+layer, and output nodes.  This, along with a gui would allow for easier testing and presentation of the 
+data and results we obtained.
 \section{Method}
 The network we implement is feed-forward, and can act like a perceptron or have multiple layers, depending
 upon how it's initialized.  We use backpropagation to adjust the weights.  When the network is run, the input
@@ -71,7 +74,10 @@ This formula is applied to every node of every layer to adjust weights, with the
 layer, as it has no associated weights.
 \section{System Architecture and Implementation}
 The data was obtained with a ruby script that accessed Mtgox.com every hour in order to pull down the information we used.
-This information was then recorded into a Postgresql database every hour.  We used Heroku to host the script and the database.
+Mtgox.com distributes API keys to users who want to datamine their site or who want to be able to execute trades without
+a browser.  There is a ruby module that we used that handles all interactions with the Mtgox.com API.
+This information was then recorded into a Postgresql database every hour.  We used Heroku to host the script and the database, as 
+well as some add-ons provided free by Heroku to monitor the functionality of our app.  
 We then pruned our data so that the only examples we were using had appropriate feedback--that is, we cut out the last 24 examples
 since we did not have information on their future price.  The ruby script that accesses the Mtgox.com API was executed as a cron
 task every hour.  
@@ -107,7 +113,35 @@ the derivative in the process of adjusting the weights we found that when the ar
 greater than 709, it would output Nan.  Since as x goes to infinity, the derivative function, approaches zero, we manually
 check is the derivative returns Nan, and if it does we output zero.
 \section{Conclusions}
-
-
+Our neural network can learn to output a guess that is expected to be 49\cent away from the actual price.  Only 12\cent away from
+the target value of 37\cent, which is the naive guess.  This value was attained through much testing and tweaking of the parameters
+of the neural network.  Eventually we found the following to be the values which attained the best results:
+\newline \newline Nodes Per Hidden Layer: 20
+\newline \newline Hidden Layers: 2
+\newline \newline Learning Rate: 0.9
+\newline \newline
+As nodes per hidden layer increased, we found that average squared distance was asymptotically increasing to a value of .2 (given
+that hidden layers > 1).  At 20 nodes per hidden layer we can frequently obtain a value within .05 of the asymptote.  While at
+times, on certain iterations this number is not achieved, running this network until we achieve such a value is quicker
+and just as reliable as adding nodes per hidden payer.  When the amount of nodes per hidden layer increases past 20, the reliability
+in coming closer to this asymptote is not as noteable as the speed cost incurred by adding another node, especially when the 
+amount of hidden layers > 1.  
+\newline \newline
+The same can be observed regarding amount of hidden layers: any value less than 2 performs significantly worse, and any value greater
+than two performs negligibly better, but at a huge performance cost.  The results we have presented here are juat the result of
+working with fixed features and number of inputs.  A major accomplishment has been creating the framework that allows for very easy
+tweaking of they system, so that this network can be tested with totally different features, as well as different numbers of 
+features.  It can also be used for a totally different problem space, however given how close we came to breaking through the
+barrier of the naive prediction with no tweaking of the input features, we think that with more data and more intelligent feature
+selection this network can be used to model bitcoin prices more effectively than it does here, and possibly break through
+the barrier of naive prediction.
+\newline \newline
+In commodities trading it's considered vital to have data on the relationship between your commodity of interest and many other
+commodities.  Since we only use the USD as a comparison point for our commodity of interest, it's very possible that adding other
+currencies and examining the relationships that they all undergo would significantly improve the performance of the neural 
+network.  However, our pre-collected data only paid attention to the dollar, and so our model only pays attention to the dollar
+as well.  Notwithstanding its obvious shortcomings, we think we have created a valuable tool in the very mutable neural network and
+were pleasantly surprised with the performance of the network in this problem domain, and think it's a great jumping off
+point for more accurately modeling bitcoin price behavior.
 
 \end{document}
