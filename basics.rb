@@ -43,6 +43,10 @@ class Basics
     index
   end 
 
+def snapshotLength
+  @@snapshots.count
+end
+
   def getFirstSnapshots(x)
     ret = []
     for i in 0..(x - 1)
