@@ -21,7 +21,8 @@
 \begin{document}
 \maketitle
 \section{Abstract}
-To investigate the Efficient Market Hypothesis and to look at the effects and properties of neural networks, we investigated the feasiblity of predicting financial information using an Artificial Neural Network. We wished to find if we could predict the bitcoin USD price based on by modeling the price fluctionation with a neural network and by tuning properties of the network to optimize network preformance.  Our method involved creating a feedforward neural network that used back-propagation, the details of which can be found in the Method section. By evaluating Related Work, we were able to see different approaches used by other researchers  and to consider different approaches such as suggestions as to which variables to experiment over and which to keep constant, as well as suggestions  on the structure of the network. The System Architecture involved the interactions of Node, Network and other classes, with most of the computation occuring in Node (the propagation, error and weight adjustment) while Network simply helped to iterate over the network and the other files provided supporting methods, such as automated ways of supplying input and calculating error. We then give an Experimental Evaluation, discussing the Methodology as well as evaluation techniques, the results found and a discussion of these results in the context of the related work mentioned earlier. Future work suggests areas for improvements, such as varying the transition function, adding algorithms to find the independant components and other techniques to possilby improve the network. To conclude, we maintain that while our network did not produce the expected results, based on related work this approach is feasible and could be implemented if more advanced techniques were included in the algorithms. 
+To investigate the Efficient Market Hypothesis and to look at the effects and properties of neural networks, we investigated the feasiblity of predicting financial information using an Artificial Neural Network. We wished to find if we could predict the bitcoin USD price based on by modeling the price fluctionation with a neural network and by tuning properties of the network to optimize network preformance.  Our method involved creating a feedforward neural network that used back-propagation, the details of which can be found in the Method section. By evaluating Related Work, we were able to see different approaches used by other researchers  and to consider different approaches such as suggestions as to which variables to experiment over and which to keep constant, as well as suggestions  on the structure of the network. The System Architecture involved the interactions of Node, Network and other classes, with most of the computation occuring in Node (the propagation, error and weight adjustment) while 
+Network simply helped to iterate over the network and the other files provided supporting methods, such as automated ways of supplying input and calculating error. We then give an Experimental Evaluation, discussing the Methodology as well as evaluation techniques, the results found and a discussion of these results in the context of the related work mentioned earlier. Future work suggests areas for improvements, such as varying the transition function, adding algorithms to find the independant components and other techniques to possilby improve the network. To conclude, we maintain that while our network did not produce the expected results, based on related work this approach is feasible and could be implemented if more advanced techniques were included in the algorithms. 
 
 \section{Introduction}
 Neural networks have been successfully used to
@@ -149,7 +150,8 @@ month effects
 
 \section{Future Work}
 
-In the future, it might be interesting and educational to try many of the more advanced suggestions from the Related Works section. By examining different types of stock, or the market over a longer period of time we could mitigate some of the challenges discussed by Gryc and  by Forradellas \& Sarrió. We could also experiment with multiple tranisition functions as suggested by Tan or perhaps see the affects of using more inputs to approach the larger numbers evaluated by Vaisla \& Bhatt in the network that took 500 inputs daily. Finally we could prune our input, removing all dependant or noisy data through methods such as ICA as suggested by Liu \& Wang. Other vectors of experimenation might include changing the prediction period to a week or month, or by changing the time between the inputed sets of information. Extending the prediction period will show the network's ability to discern much more distant effects which creates many more degrees of uncertainty, and which might introduce more noise into the system. To change the time between input sets, we could input more recent information, and choose to exclude data from the past, or add more data points from the past and less from more recent times to evaluate which information is more useful to the network.
+In the future, it might be interesting and educational to try many of the more advanced suggestions from the Related Works section. By examining different types of stock, or the market over a longer period of time we could mitigate some of the challenges discussed by Gryc and  by Forradellas \& Sarrió. We could also experiment with multiple tranisition functions as suggested by Tan or perhaps see the affects of using more inputs to approach the larger numbers evaluated by Vaisla \& Bhatt in the network that took 500 inputs daily. Finally we could prune our input, removing all dependant or noisy data through methods such as ICA as suggested by Liu \& Wang. Other vectors of experimenation might include changing the prediction period to a week or month, or by changing the time between the inputed sets of information. Extending the prediction period will show the network's ability to discern much more distant effects which creates many more degrees of uncertainty, and which might introduce more noise into the 
+system. To change the time between input sets, we could input more recent information, and choose to exclude data from the past, or add more data points from the past and less from more recent times to evaluate which information is more useful to the network.
 
 
 \section{Conclusions}
@@ -171,7 +173,8 @@ Both partners worked on research of neural networks at the begining to learn the
 
 \section{References/Bibliography}
 
-"Backpropagation." Virtual Laboratory for Artificial Intelligence. AGH University of Technology and Science, n.d. Web. 10 Dec. 2012.
+"Backpropagation." Virtual Laboratory for Artificial Intelligence. AGH University of Technology and Science, n.d. Web. 10 Dec. 2012.\\
+
 
 Forradellas, M. Teresa S., and Dídac R. Sarrió. "AN ANALYSIS OF MONTHLY EFFECTS IN THE SPANISH STOCK MARKET USING ARTIFICIAL NEURAL NETWORKS." FUZZY ECONOMIC REVIEW 14.1 (2009): n. pag.\\ http://search.proquest.com/docview/229038044. Web. 10 Dec. 2012.\\
 
@@ -179,15 +182,15 @@ Gryc, Wojciech. Neural Network Predictions of Stock Price Fluctuations. Initiati
 
 Lawrence, Ramon. "Using Neural Networks to Forecast Stock Market Prices." Diss. University of Manitoba, 1997. THE UNIVERSITY OF BRITISH COLUMBIA. Web. 10 Dec. 2012. https://people.ok.ubc.ca/rlawrenc/research/Papers/nn.pdf.\\
 
-Liu, Haifan. "Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market." Mathematical Problems in Engineering Volume 2011 (2011): n. pag. Hindawi Publishing Corporation. Web. 10 Dec. 2012. http://www.hindawi.com/journals/mpe/2011/382659/cta/.\\
+Liu, Haifan. "Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market." Mathematical Problems in Engineering Volume 2011 (2011): n. pag. Hindawi Publishing Corporation. Web. 10 Dec. 2012.\\ http://www.hindawi.com/journals/mpe/2011/382659/cta/.\\
 
 Norvig, Peter. "18.7 Artificial Neural Networks." Artificial Intelligence (A Modern Approach). By Stuart Russell. Third ed. Upper Saddle River, New Jersey: Pearson Education, 2010. 727-37. Print. Prentice Hall.\\
 
 Nygren, Karl. "Stock Prediction – A Neural Network Approach." Diss. Royal Institute of Technology, KTH, 2004. Web. 10 Dec. 2012. http://www.f.kth.se/~f98-kny/thesis.pdf.\\
 
-Tan, Dr Clarence N W. "‘An Artificial Neural Networks Primer with Financial Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System ’." (1997): n. pag. http://www.smartquant.com/references/NeuralNetworks/neural28.pdf. Web. 10 Dec. 2012. \\
+Tan, Dr Clarence N W. "‘An Artificial Neural Networks Primer with Financial Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System ’." (1997): n. pag.\\ http://www.smartquant.com/references/NeuralNetworks/neural28.pdf. Web. 10 Dec. 2012. \\
 
-Vaisla, Kunwar S., and Dr. Ashutosh K. Bhatt. "An Analysis of the Performance of Artificial Neural Network Technique for Stock Market Forecasting." International Journal on Computer Science and Engineering 2.6 (2010): n. pag. Web. 10 Dec. 2012. http://http://www.enggjournals.com/ijcse/doc/IJCSE10-02-06-111.pdf.\\
+Vaisla, Kunwar S., and Dr. Ashutosh K. Bhatt. "An Analysis of the Performance of Artificial Neural Network Technique for Stock Market Forecasting." International Journal on Computer Science and Engineering 2.6 (2010): n. pag. Web. 10 Dec. 2012.\\ http://http://www.enggjournals.com/ijcse/doc/IJCSE10-02-06-111.pdf.\\
 
 \section{Appendix}
 
