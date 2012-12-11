@@ -17,6 +17,15 @@ def findBestIn(x, n, h, step, loops)
   best
 end
 
+def findAverageIn(x, n, h, step, loops)
+  total = 0
+  for i in 1..loops
+    trained = trainAndValidate(x, n, h, step) 
+    total += trained.ann
+  end
+  total/loops
+end
+
 def findBestInTrivial(x, y, n, h, step, loops)
   #set initial
   best = trainAndValidateTrivial(x,y, n, h, step)
