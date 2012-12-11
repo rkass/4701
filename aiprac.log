@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.19)  10 DEC 2012 19:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.19)  11 DEC 2012 12:19
 entering extended mode
  %&-line parsing enabled.
 **aiprac.tex
@@ -8,8 +8,8 @@ Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/share/texmf-texlive/tex/latex/base/size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -23,10 +23,35 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
 (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks14
-\inpenc@posthook=\toks15
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
 
 (/usr/share/texmf-texlive/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -240,153 +265,332 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
+(/usr/share/texmf-texlive/tex/latex/setspace/setspace.sty
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+) (/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@dimlist=\toks17
+)
 (/usr/share/texmf-texlive/tex/latex/wasysym/wasysym.sty
 Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
 \symwasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 (Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
-) (./aiprac.aux)
+) (./aiprac.aux
+
+LaTeX Warning: Label `table:table' multiply defined.
+
+
+LaTeX Warning: Label `table:table' multiply defined.
+
+
+LaTeX Warning: Label `table:table' multiply defined.
+
+)
 \openout1 = `aiprac.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 20.
-LaTeX Font Info:    Try loading font information for U+wasy on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+ (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count91
+\scratchdimen=\dimen109
+\scratchbox=\box26
+\nofMPsegments=\count92
+\nofMParguments=\count93
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count94
+\MPscratchDim=\dimen110
+\MPnumerator=\count95
+\everyMPtoPDFconversion=\toks19
+)
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 90.3375pt, 416.83289pt, 90.3375pt
+v-parts: 90.3375pt, 664.37186pt, 90.3375pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  416.83289pt
+\textheight 664.37186pt
+\oddsidemargin  18.0675pt
+\evensidemargin 18.0675pt
+\topmargin  -18.9325pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 50.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  10.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 22.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 22.
 (/usr/share/texmf-texlive/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 26.
+(Font)              <10.95> on input line 32.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 26.
+(Font)              <9> on input line 32.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 32.
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--37
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--75
-
- []
-
-
-Overfull \hbox (2.77779pt too wide) in paragraph at lines 47--75
-[]\OT1/cmr/m/n/10 . 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--75
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--75
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--75
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--75
+Underfull \hbox (badness 10000) in paragraph at lines 28--43
 
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 76--115
+Underfull \hbox (badness 10000) in paragraph at lines 59--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--115
+Overfull \hbox (3.04167pt too wide) in paragraph at lines 59--87
+[]\OT1/cmr/m/n/10.95 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--115
+Underfull \hbox (badness 10000) in paragraph at lines 59--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--115
-
- []
-
-[2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 116--146
+Underfull \hbox (badness 10000) in paragraph at lines 59--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--146
+Underfull \hbox (badness 10000) in paragraph at lines 59--87
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 89--104
+
+ []
+
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 106--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--146
+Underfull \hbox (badness 10000) in paragraph at lines 106--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--146
+Underfull \hbox (badness 10000) in paragraph at lines 106--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--146
+Underfull \hbox (badness 10000) in paragraph at lines 106--149
+
+ []
+
+[5] [6] <nodes.png, id=33, 602.25pt x 372.39125pt>
+File: nodes.png Graphic file (type png)
+ <use nodes.png>
+<layers.png, id=34, 602.25pt x 372.39125pt>
+File: layers.png Graphic file (type png)
+ <use layers.png>
+<learning.png, id=35, 602.25pt x 372.39125pt>
+File: learning.png Graphic file (type png)
+ <use learning.png>
+<trainRatio.png, id=36, 602.25pt x 372.39125pt>
+File: trainRatio.png Graphic file (type png)
+ <use trainRatio.png>
+Underfull \hbox (badness 10000) in paragraph at lines 156--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--146
+Underfull \hbox (badness 10000) in paragraph at lines 156--171
 
  []
 
-[4] [5] (./aiprac.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--171
+
+ []
+
+[7 <./nodes.png (PNG copy)>] [8 <./layers.png (PNG copy)>] [9 <./learning.png (
+PNG copy)> <./trainRatio.png (PNG copy)>] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 188--218
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--218
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--218
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--218
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--218
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--218
+
+ []
+
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
+
+ []
+
+[13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14
+
+] [15] (./aiprac.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 624 strings out of 495061
- 6135 string characters out of 1182621
- 62087 words of memory out of 3000000
- 3848 multiletter control sequences out of 15000+50000
- 8908 words of font info for 33 fonts, out of 3000000 for 9000
+ 1757 strings out of 495061
+ 21741 string characters out of 1182621
+ 85411 words of memory out of 3000000
+ 4933 multiletter control sequences out of 15000+50000
+ 11043 words of font info for 40 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 24i,8n,19p,161b,193s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/shar
-e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/wasy/wasy
-10.pfb>
-Output written on aiprac.pdf (5 pages, 157378 bytes).
+ 25i,8n,32p,1055b,207s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/wasy/wasy10.pfb>
+Output written on aiprac.pdf (15 pages, 233005 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
+ 107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 \documentclass[a4paper,11pt]{article}
 %\documentclass[a4paper,10pt]{scrartcl}
-
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \onehalfspacing
@@ -21,7 +21,7 @@
 \begin{document}
 \maketitle
 \section{Abstract}
-To investigate the Efficient Market Hypothesis and to look at the effects and properties of neural networks, we investigated the feasiblity of predicting financial information using an Artificial Neural Network. We wished to find if we could predict the bitcoin USD price based on by modeling the price fluctionation with a neural network and by tuning properties of the network to optimize network preformance.  Our method involved creating a feedforward neural network that used back-propagation, the details of which can be found in the Method section. By evaluating Related Work, we were able to see different approaches used by other researchers  and to consider different approaches such as suggestions as to which variables to experiment over and which to keep constant, as well as suggestions  on the structure of the network. The System Architecture involved the interactions of Node, Network and other classes, with most of the computation occuring in Node (the propagation, error and weight adjustment) while 
+To investigate the Efficient Market Hypothesis and to look at the effects and properties of neural networks, we investigated the feasiblity of predicting financial information using an Artificial Neural Network. We wished to find if we could predict the bitcoin USD price by modeling the price fluctionation with a neural network and by tuning properties of the network to optimize network preformance.  Our method involved creating a feedforward neural network that used back-propagation, the details of which can be found in the Method section. By evaluating Related Work, we were able to see different approaches used by other researchers  and to consider different approaches such as suggestions as to which variables to experiment over and which to keep constant, as well as suggestions  on the structure of the network. The System Architecture involved the interactions of Node, Network and other classes, with most of the computation occuring in Node (the propagation, error and weight adjustment) while 
 Network simply helped to iterate over the network and the other files provided supporting methods, such as automated ways of supplying input and calculating error. We then give an Experimental Evaluation, discussing the Methodology as well as evaluation techniques, the results found and a discussion of these results in the context of the related work mentioned earlier. Future work suggests areas for improvements, such as varying the transition function, adding algorithms to find the independant components and other techniques to possilby improve the network. To conclude, we maintain that while our network did not produce the expected results, based on related work this approach is feasible and could be implemented if more advanced techniques were included in the algorithms. 
 
 \section{Introduction}
@@ -29,7 +29,7 @@ Neural networks have been successfully used to
 model commodity pricing data and even to refute the Efficient Market Hypothesis
 through their ability to generalize commodity data into non-linear, 
 stochastic functions previously thought to be entirely stochastic and non-generalizeable
-\footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices 1997}
+\footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices 1997}.
 The commodity we chose to test our network on, Bitcoin, was established in 2009 and has 
 experienced massive volatility in its price since its inception.  We chose to use Bitcoin 
 precicely for this reason, and the fact that it is an immature market not yet flooded with
@@ -46,13 +46,11 @@ Can an artificial neural network constructed in ruby be trained to accurately pr
 of a bitcoin twenty four hours in the future.  The network is trained on approximately 3,000 examples.
 Each example contains four data points, last price, difference between highest bid and lowest ask,
 amount of bitcoins up for sale, and amount of bitcoins asked for.  The output is a floating point which
-
 represents the predicted price twenty four hours from now. 
 By varying network architecture, such as the number of nodes per layer, 
 the number of hidden layers in the network, and the learning rate in the network 
 we wished to see if we could optimize preformace of the network. 
-
-As a subtask, we set out to implement a highly
+\newline As a subtask, we set out to implement a highly
 flexible neural network that can be initialized with any number of inputs, hidden layers, nodes per hidden
 layer, and output nodes.  This, along with a gui would allow for easier testing and presentation of the 
 data and results we obtained.
@@ -78,9 +76,9 @@ Next, the weights must be adjusted using \newline \newline
 \centerline{\textit{w = w + $\Delta$} where $\Delta$ is defined as:} \newline \newline 
 \centerline{\textit{$\Delta$ = derivative * error * step * output}}  
 \newline \newline The step is a
-number between 0 and 1 that determines how fast the weights get adjusted.  Setting the step too high results in the
-network getting stuck at a local maximum, while setting it toolow does not allow it to learn quickly enough given the number
-of examples.  The output is whatever this node outputted to its synapses.  In the case of the top most layer this will be 
+number between 0 and 1 that determines how fast the weights get adjusted.  Our results
+keep improving with higher learning rates, suggesting that the network is not ever fully trained, and needs more data.  
+The output is whatever this node outputted to its synapses.  In the case of the top most layer this will be 
 boundless, but in the case of the hidden layers, this will necessarily be a number between 0 and 1, because it was fed through
 a transition function.  The derivative is the summed weights and inputs fed into the derivative of the transition fucntion, which
 is {$\frac{e^{x}}{({1 + e^{x}})^{2}}$}.
@@ -88,10 +86,10 @@ This formula is applied to every node of every layer to adjust weights, with the
 layer, as it has no associated weights.
 
 \section{Related Work}
-Several studies and analysies have been done to examine the usefulness of Neural Networks in predicting financial data, especially in the prediction of stock. Upon begining the project, we based a great deal of our planning on a piece written by Dr Clarence N W Tan, PhD titled "Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System." \footnote{Clarence Tan ``Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System'' 1997} This paper gave a brief explanation of neural nets and discussed their ability to predict financial information. Specifically, it discussed the history and fundamentals of neural networks, explaning the concepts of feedforward networks and backpropagation along with their formulaes (for a recap on these concepts, see Method above) After describing these principles, it continued by discussing the parameters along which you could change a neural network and perhaps optimize preformace. It listed the dynamic 
+Several studies and analysies have been done to examine the usefulness of Neural Networks in predicting financial data, especially in the prediction of stock. Upon begining the project, we based a great deal of our planning on a piece written by Dr Clarence N W Tan, PhD titled ``Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System." \footnote{Clarence Tan ``Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System'' 1997} This paper gave a brief explanation of neural nets and discussed their ability to predict financial information. Specifically, it discussed the history and fundamentals of neural networks, explaning the concepts of feedforward networks and backpropagation along with their formulaes (for a recap on these concepts, see Method above). After describing these principles, it continued by discussing the parameters along which you could change a neural network and perhaps optimize preformace. It listed the dynamic 
 variables (refered to as the ``neurodynamics'' of the system) as: ''combination of inputs, production of outputs, types of activation functions and weighting schemes`` and the architecture variables (the variables affecting the structure of the network) as ''types of interconnections, number of neurons and number of [hidden] layers.`` . After discussion, we decided to vary the network architecture, experimenting on the number of nerons and the number of hidden layers. The inputs, and outputs would remain constant, as would the weighting scheme (initiliaze with random weights, update based on Back Propogation). Finally, while we hoped to evaluate the effects of changing the transition function, we decided that this manipulation might be too much and instead simply varied the nodes and layers, sticking with a traditional sigmoidal logistic function as an activation funciton for each node. After discussion with the professor, it was decided that the interconnections, too would remain static, simply attaching 
 all nodes in the previous layer, to all nodes in the current layer, in order to allow the network to prune itself. We were also intrested in the effect of the learning rate on the network and decided to vary along this dimension as well.\\
-Other related works include ''Using Neural Networks to Forecast Stock Prices`` \footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices 1997} which also touches on the Efficient Market Hypothesis, 
+\newline Other related works include ''Using Neural Networks to Forecast Stock Prices`` \footnote{Ramon Lawrence, Using Neural Networks to Forecast Stock Market Prices 1997} which also touches on the Efficient Market Hypothesis, 
 attemting to realistically evaluate how much Neural Networks can contribute to the prediction of stocks. In
 the paper, Lawrence argues that NNs have outpreformed all other forms of financial prediction, but cautions
 readers about the limitations of NNs. Comparing NNs to expert systems, he states that ''neural networks are
@@ -100,10 +98,10 @@ formulating knowledge of the markets`` \footnote{Lawrence p 8}but that NNs can e
 understand or expliclty formalize the rules. He does recognize the limitations however, citing a study by
 McCluskey where ''neural networks all beat the buy and hold strategy and the S and P 500 index, but often
 failed to beat a hand-coded optimization.`` \footnote{Lawrence p 18}
-Finally, we reviewed many other papers which discussed the several other extensions of Neural Networks. One entertained the possibility of doing component analysis so that the inputs were independant and which reduced the noise put into the system and analyzed two such techniques an Independant Component Analysis that assumed a non-Gaussian distribution of inputs and a Principle Componnet Analysis which extracted independant components while assuming a Gaussian distribution. In both cases the researchers found that removing noise and only inputing independant factors increased the accuracy over a simple neural network \footnote{Liu and Wang ''Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market`` 2011}. While our experiment didn't expliclty run algorithms to remove dependant factors, while choosing the input vector, we did take independance of factors into account. 
+Finally, we reviewed many other papers which discussed the several other extensions of Neural Networks. One entertained the possibility of doing component analysis so that the inputs were independent and which reduced the noise put into the system and analyzed two such techniques an Independent Component Analysis that assumed a non-Gaussian distribution of inputs and a Principle Componnet Analysis which extracted independent components while assuming a Gaussian distribution. In both cases the researchers found that removing noise and only inputing independent factors increased the accuracy over a simple neural network \footnote{Liu and Wang ''Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market`` 2011}. While our experiment didn't expliclty run algorithms to remove dependent factors, while choosing the input vector, we did take independance of factors into account. 
 These relevant works aided in planning our network and experiments, and as you will see later, can be used to help us evaluate the results we receive and account for succeses and failures in our approach.
 
-For background, we also consulted the class's textbook ''Artificial Intelligence: A Modern Approach`` and an online article by the AGH University of Technology and Science in Poland. Both provided us with general background knowledge of Artificial Neural Networks and the ability to understand and code concepts such as Back-Propagations. 
+\newline For background, we also consulted the class's textbook ''Artificial Intelligence: A Modern Approach`` and an online article by the AGH University of Technology and Science in Poland. Both provided us with general background knowledge of Artificial Neural Networks and the ability to understand and code concepts such as Back-Propagations. 
 
 \section{System Architecture and Implementation}
 The data was obtained with a ruby script that accessed Mtgox.com every hour in order to pull down the information we used.
@@ -156,19 +154,38 @@ The GUI was created by using an extension called Ruby Shoes which allows simple 
 We evaluate our neural network by taking the mean squared error of the output and the expected result. We then find the mean squared error (MSE) between the naive prediction and the expected result. For the purposes of this experiment, we defined the ''naive`` result as the result that would be obtained had we simply outputted the price in the market 24 hours prior to the predicted time. 
 Our neural network was trained by the data collected from the bitcoin site mtgox.com. We input as a parameters to the network the ratio of training to validation data out of our 3000 samples and would take the first x(3000) sets as training data and take the last (1-x)3000 sets as validation data. This allowed us to simulate  how the network would be used in real systems, training on recent data and predicting the unknown values for events in the next few days/weeks. 
 \subsection{Results}
+To provide a simple summary of the factors we analyzed, we created graphics showing the basic trends discovered (for the data that created these specific graphis, please see the Appendix). Each graph shows the variation of the network results while varying one of the architecture parameters. The MSE is the average Mean Squared Error found over the number of times we iterated (detailed in the tables). Note that while we did several runs, we only show a small sample of the data and that, due to the random initial weights, there is some variation due to that randomness and small sample size that may cause small anamolies in the graphs.  \newline
+We found that by increasing the number of nodes we could increase the accuracy of the network asymptotically.  We had expected to find some level where the ability to increase terminated, at a place where overfitting occured, but a value was never found. A graph of the results on networks of 10-60 nodes is shown below. \newline
+\includegraphics[width=135mm]{nodes.png} \\
+\newline
+Hidden layers were slightly harder to investigate, several of our first attemts to discover the optimal number of layers failed because we found no variation in the MSE for trials (see blue line that tracks a network with 12 nodes and 40 iterations). Upon further experimenation we found that by increasing the number of iterations and nodes per layer, we could find a distinction between having 1 layer (simply modeling a perceptron) and having mulitple layers, but after 2 layers it seemed highly arbitrary to the results how many layers occured. Again, this was unexpected. We expected to find some optimized MSE and then a drop-off where overfitting had occured. \newline
+\includegraphics[width=135mm]{layers.png} \\
+\newline
+The third architecture parameter to optimize was the learning rate. This value, most definitely will peak and give a bound if given enough data, because as a learning rate approaches 1 the function will simply learn the training set and not the true function. Unfortunately, we could not even find a reasonable bound for this value, it too caused an asymptotic increase in accuracy (and corresponding decrease in average MSE). When doing research we saw typical learning rate or step values between 0.3 and 0.65, with one or two a few orders of magnitude below 0.3, but never did we see an optimal network around 0.95. We believe this is a strong signal that we do not have enough data to train our network and that we did not collect enough data to properly analyze the effectiveness of some of these techniques. See below for the graph of learning rates vs MSE and the appendix for the tabular values. 
+\newline
+\includegraphics[width=135mm]{learning.png} \\
+\newline
+Finally, we varied the ratio of training values to validation values. On this final parameter, we also found an asymptotic increase in accuracy. While this could occur for many reasons, we believe that in this context it again indicates a lack of large enough sample size for our network. Another potential cause might be that as we increase the training size, the network is better able to generalize the inputs and does less overfitting than occured in lower training sizes. This we discard becuase we found no evidence of overfitting in any of the other results, and because the need for a larger sample size is consistent with the rest of the data. 
+\newline
+\includegraphics[width=135mm]{trainRatio.png} \\
+\newline
 \subsection{Discussion}
-different types of stocks
-month effects
+As mentioned above, our network most likely suffered from a lack of training data and never fully converged to a result, meaning that the results could be improved by simply running the network over more data (which we unfortunately do not have access to). Comparing to research in the area, we found studies that collected as many as 500 data points a day \footnote{Vaisla et al. ''An Analysis of the Performance of Artificial
+Neural Network Technique for Stock Market Forecasting``}, and iterated over significantly more instances to train. 
+\newline
+Along with our need for more data points to train over, research into different financial and stock prediction systems suggested other improvements that could be made to the system. 
+Gryc discussed that training over different stock types could produce different results. They suggested that certain stocks or prices are more 'predictable' and therefore better suited to Neural Network analysis \footnote{Gryc 'Neural Network Predictions of Stock Price Fluctuations'}. Perhpas running our network over different stocks or prices could improve (or reduce) or success in finding accurate prediction values. Another idea would be to compare Bitcoin's relationship to a different currency (perhaps the Euro instead of USD). 
+Another issue found was that in the Spanish market, the stocks were affected by the month of the year, and other cyclic ''calendar effects`` \footnote{Forradellas, M. Teresa S., and Dídac R. Sarrió. "AN ANALYSIS OF MONTHLY EFFECTS IN THE SPANISH STOCK MARKET USING ARTIFICIAL NEURAL NETWORKS."}. Perhaps because we only inspected 3 months of data, we were unable to separate the noise of month effects from our data. Having a year or two worth of data and potentially inputting relevant date information might also yeild more valuable results. 
 
 
 \section{Future Work}
 
-In the future, it might be interesting and educational to try many of the more advanced suggestions from the Related Works section. By examining different types of stock, or the market over a longer period of time we could mitigate some of the challenges discussed by Gryc and  by Forradellas \& Sarrió. We could also experiment with multiple tranisition functions as suggested by Tan or perhaps see the affects of using more inputs to approach the larger numbers evaluated by Vaisla \& Bhatt in the network that took 500 inputs daily. Finally we could prune our input, removing all dependant or noisy data through methods such as ICA as suggested by Liu \& Wang. Other vectors of experimenation might include changing the prediction period to a week or month, or by changing the time between the inputed sets of information. Extending the prediction period will show the network's ability to discern much more distant effects which creates many more degrees of uncertainty, and which might introduce more noise into the 
+In the future, it might be interesting and educational to try many of the more advanced suggestions from the Related Works section. By examining different types of stock (or simply the Bitcoin price compared to currencies other than USD), or examining the market over a longer period of time we could mitigate some of the challenges discussed by Gryc and  by Forradellas \& Sarrió. We could also experiment with multiple tranisition functions as suggested by Tan or perhaps see the affects of using more inputs to approach the larger numbers evaluated by Vaisla \& Bhatt in the network that took 500 inputs daily. Finally we could prune our input, removing all dependent or noisy data through methods such as ICA as suggested by Liu \& Wang. Other vectors of experimenation might include changing the prediction period to a week or month, or by changing the time between the inputed sets of information. Extending the prediction period will show the network's ability to discern much more distant effects which creates 
+many more degrees of uncertainty, and which might introduce more noise into the 
 system. To change the time between input sets, we could input more recent information, and choose to exclude data from the past, or add more data points from the past and less from more recent times to evaluate which information is more useful to the network.
 
 
 \section{Conclusions}
-<<<<<<< HEAD
 Our neural network can learn to output a guess that is expected to be 49\cent away from the actual price.  Only 12\cent away from
 the target value of 37\cent, which is the naive guess.  This value was attained through much testing and tweaking of the parameters
 of the neural network.  Eventually we found the following to be the values which attained the best results:
@@ -177,11 +194,11 @@ of the neural network.  Eventually we found the following to be the values which
 \newline \newline Learning Rate: 0.9
 \newline \newline
 As nodes per hidden layer increased, we found that average squared distance was asymptotically increasing to a value of .2 (given
-that hidden layers > 1).  At 20 nodes per hidden layer we can frequently obtain a value within .05 of the asymptote.  While at
+that hidden layers$ >$ 1).  At 20 nodes per hidden layer we can frequently obtain a value within .05 of the asymptote.  While at
 times, on certain iterations this number is not achieved, running this network until we achieve such a value is quicker
 and just as reliable as adding nodes per hidden payer.  When the amount of nodes per hidden layer increases past 20, the reliability
 in coming closer to this asymptote is not as noteable as the speed cost incurred by adding another node, especially when the 
-amount of hidden layers > 1.  
+amount of hidden layers $ > $1.  
 \newline \newline
 The same can be observed regarding amount of hidden layers: any value less than 2 performs significantly worse, and any value greater
 than two performs negligibly better, but at a huge performance cost.  The results we have presented here are juat the result of
@@ -199,8 +216,7 @@ network.  However, our pre-collected data only paid attention to the dollar, and
 as well.  Notwithstanding its obvious shortcomings, we think we have created a valuable tool in the very mutable neural network and
 were pleasantly surprised with the performance of the network in this problem domain, and think it's a great jumping off
 point for more accurately modeling bitcoin price behavior.
-=======
-While our network did not have as accurate results as we expected and wished for, research into other areas has provided inspiration for further work and possible explanations as to why our network has not preformed as well as other experimenatal networks have in the area of financial prediction. We found that for our network, the optimal number of nodes was XX, the optimal number of hidden layers was XX and the optimal step function was XX. Combined these factors allowed us to reach an accuracy of XX on validation data that had an average twenty-four hour price fluctuation of 37\cent.
+
 
 \section{Acknowledgements}
 
@@ -215,7 +231,7 @@ Ryan worked on gathering the data, the basic code outline, and implementing seve
 Both partners worked on research of neural networks at the begining to learn the properties and abilities of a neural network. The code structure, the decision of expermintal variables and network strucutre, the write-up and all remaining tasks were split evenly and frequently worked on together. 
 
 
-
+\newpage
 \section{References/Bibliography}
 
 "Backpropagation." Virtual Laboratory for Artificial Intelligence. AGH University of Technology and Science, n.d. Web. 10 Dec. 2012.\\
@@ -227,7 +243,7 @@ Gryc, Wojciech. Neural Network Predictions of Stock Price Fluctuations. Initiati
 
 Lawrence, Ramon. "Using Neural Networks to Forecast Stock Market Prices." Diss. University of Manitoba, 1997. THE UNIVERSITY OF BRITISH COLUMBIA. Web. 10 Dec. 2012. https://people.ok.ubc.ca/rlawrenc/research/Papers/nn.pdf.\\
 
-Liu, Haifan. "Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market." Mathematical Problems in Engineering Volume 2011 (2011): n. pag. Hindawi Publishing Corporation. Web. 10 Dec. 2012.\\ http://www.hindawi.com/journals/mpe/2011/382659/cta/.\\
+Liu, Haifan. "Integrating Independent Component Analysis and Principal Component Analysis with Neural Network to Predict Chinese Stock Market." Mathematical Problems in Engineering Volume 2011 (2011): n. pag. Hindawi Publishing Corporation. Web. 10 Dec. 2012. http://www.hindawi.com/journals/mpe/2011/382659/cta/.\\
 
 Norvig, Peter. "18.7 Artificial Neural Networks." Artificial Intelligence (A Modern Approach). By Stuart Russell. Third ed. Upper Saddle River, New Jersey: Pearson Education, 2010. 727-37. Print. Prentice Hall.\\
 
@@ -235,11 +251,109 @@ Nygren, Karl. "Stock Prediction – A Neural Network Approach." Diss. Royal Inst
 
 Tan, Dr Clarence N W. "‘An Artificial Neural Networks Primer with Financial Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System ’." (1997): n. pag.\\ http://www.smartquant.com/references/NeuralNetworks/neural28.pdf. Web. 10 Dec. 2012. \\
 
-Vaisla, Kunwar S., and Dr. Ashutosh K. Bhatt. "An Analysis of the Performance of Artificial Neural Network Technique for Stock Market Forecasting." International Journal on Computer Science and Engineering 2.6 (2010): n. pag. Web. 10 Dec. 2012.\\ http://http://www.enggjournals.com/ijcse/doc/IJCSE10-02-06-111.pdf.\\
-
+Vaisla, Kunwar S., and Dr. Ashutosh K. Bhatt. "An Analysis of the Performance of Artificial Neural Network Technique for Stock Market Forecasting." International Journal on Computer Science and Engineering 2.6 (2010): n. pag. Web. 10 Dec. 2012.http://http://www.enggjournals.com/ijcse/doc/IJCSE10-02-06-111.pdf.\clearpage
 \section{Appendix}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Variation in Number of Nodes per Hidden Layer }\\
+\hline
+Nodes & MSE\\ 
+\hline
+10 & 5.91\\ 
+\hline
+20 & 2.392\\ 
+\hline
+30 & 1.319\\ 
+\hline
+30 & 0.36\\ 
+\hline
+40 & 0.911\\ 
+\hline
+40 & 0.912\\ 
+\hline
+50 & 0.617\\ 
+\hline
+60 & 0.406\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Hidden Layers=2, Step=0.9, Iterations=10, Train Ratio=0.9 }} 
+\end{table}
 
 
->>>>>>> 6656ef3e2226d5a0f13355565d12550eb78e16e6
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Variation in Number of Hidden Layers}\\ 
+\hline
+Nodes & MSE - 12 Nodes, 40 Iterations & MSE - 20 Nodes, 100 Iterations\\ 
+\hline
+1 & 5.095 & 3.595\\ 
+\hline
+2 & 5.43 & 2.4\\ 
+\hline
+3 & 5.205 & 2.481\\ 
+\hline
+4 & 5.473 & 2.396\\ 
+\hline
+5 & 5.445 & --\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Step=0.9, Train Ratio=0.9 }} 
+\end{table}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Variation in Step (LearningRate)}\\ 
+\hline
+Step & MSE\\ 
+\hline
+0.6 & 4.794\\ 
+\hline
+0.7 & 4.037\\ 
+\hline
+0.8 & 3.303\\ 
+\hline
+0.9 & 1.95\\ 
+\hline
+0.95 & 0.9738\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Nodes=20, Layers=2, Iterations=40, Train Ratio=0.9 }} 
+\end{table}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+\multicolumn{2}{|c|}{Variation in Train Ratio}\\ 
+\hline
+Train Ratio & MSE\\ 
+\hline
+0.6 & 2.53\\ 
+\hline
+0.7 & 2.588\\ 
+\hline
+0.8 & 2.6\\ 
+\hline
+0.9 & 2.532\\ 
+\hline
+0.95 & 2.333\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Nodes=20, Layers=2, Iterations=40, Step=0.9}} 
+\end{table}
+
+
 
 \end{document}
