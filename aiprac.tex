@@ -1,6 +1,6 @@
 \documentclass[a4paper,11pt]{article}
 %\documentclass[a4paper,10pt]{scrartcl}
-
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \onehalfspacing
@@ -156,6 +156,8 @@ The GUI was created by using an extension called Ruby Shoes which allows simple 
 We evaluate our neural network by taking the mean squared error of the output and the expected result. We then find the mean squared error (MSE) between the naive prediction and the expected result. For the purposes of this experiment, we defined the ''naive`` result as the result that would be obtained had we simply outputted the price in the market 24 hours prior to the predicted time. 
 Our neural network was trained by the data collected from the bitcoin site mtgox.com. We input as a parameters to the network the ratio of training to validation data out of our 3000 samples and would take the first x(3000) sets as training data and take the last (1-x)3000 sets as validation data. This allowed us to simulate  how the network would be used in real systems, training on recent data and predicting the unknown values for events in the next few days/weeks. 
 \subsection{Results}
+
+\includegraphics[width=75mm]{nodes.png}
 \subsection{Discussion}
 different types of stocks
 month effects
@@ -234,8 +236,109 @@ Nygren, Karl. "Stock Prediction – A Neural Network Approach." Diss. Royal Inst
 Tan, Dr Clarence N W. "‘An Artificial Neural Networks Primer with Financial Applications Examples in Financial Distress Predictions and Foreign Exchange Hybrid Trading System ’." (1997): n. pag.\\ http://www.smartquant.com/references/NeuralNetworks/neural28.pdf. Web. 10 Dec. 2012. \\
 
 Vaisla, Kunwar S., and Dr. Ashutosh K. Bhatt. "An Analysis of the Performance of Artificial Neural Network Technique for Stock Market Forecasting." International Journal on Computer Science and Engineering 2.6 (2010): n. pag. Web. 10 Dec. 2012.\\ http://http://www.enggjournals.com/ijcse/doc/IJCSE10-02-06-111.pdf.\\
-
+\newline
 \section{Appendix}
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Variation in Number of Nodes per Hidden Layer }\\
+\hline
+Nodes & MSE\\ 
+\hline
+10 & 5.91\\ 
+\hline
+20 & 2.392\\ 
+\hline
+30 & 1.319\\ 
+\hline
+30 & 0.36\\ 
+\hline
+40 & 0.911\\ 
+\hline
+40 & 0.912\\ 
+\hline
+50 & 0.617\\ 
+\hline
+60 & 0.406\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Hidden Layers=2, Step=0.9, Iterations=10, Train Ratio=0.9 }} 
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Variation in Number of Hidden Layers}\\ 
+\hline
+Nodes & MSE - 12 Nodes, 40 Iterations & MSE - 20 Nodes, 100 Iterations\\ 
+\hline
+1 & 5.095 & 3.595\\ 
+\hline
+2 & 5.43 & 2.4\\ 
+\hline
+3 & 5.205 & 2.481\\ 
+\hline
+4 & 5.473 & 2.396\\ 
+\hline
+5 & 5.445 & --\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Step=0.9, Train Ratio=0.9 }} 
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Variation in Step (LearningRate)}\\ 
+\hline
+Step & MSE\\ 
+\hline
+0.6 & 4.794\\ 
+\hline
+0.7 & 4.037\\ 
+\hline
+0.8 & 3.303\\ 
+\hline
+0.9 & 1.95\\ 
+\hline
+0.95 & 0.9738\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Nodes=20, Layers=2, Iterations=40, Train Ratio=0.9 }} 
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+\multicolumn{2}{|c|}{Variation in Train Ratio}\\ 
+\hline
+Train Ratio & MSE\\ 
+\hline
+0.6 & 2.53\\ 
+\hline
+0.7 & 2.588\\ 
+\hline
+0.8 & 2.6\\ 
+\hline
+0.9 & 2.532\\ 
+\hline
+0.95 & 2.333\\ 
+\hline
+\hline\end{tabular}
+\label{table:table}
+\caption{\small{Nodes=20, Layers=2, Iterations=40, Step=0.9}} 
+\end{table}
+
 
 
 \end{document}
